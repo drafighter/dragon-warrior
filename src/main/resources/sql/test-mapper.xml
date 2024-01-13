@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amorepacific.oneap.test.mapper.testMapper">
+
+
+<select id="selectUserId"  parameterType="String"  resultType="com.amorepacific.oneap.test.vo.UserData">
+
+			SELECT
+				um_user_name, um_user_password
+			FROM
+				ocp.um_user uu 
+			WHERE um_user_name = #{um_user_name}
+
+</select>
+
+<insert id="addChcd" parameterType="com.amorepacific.oneap.test.vo.Occued_chcs" >
+	insert into
+		ocp.occued_chcs_lin_acct
+		(
+		ch_cd,
+		chcs_web_id,
+		lin_pwd_ec,
+		incs_no,
+		incs_web_id_swt_yn,
+		fscr_id,
+		lsch_id
+		)
+	VALUES
+	(
+		#{ch_cd},
+		#{chcs_web_id},
+		#{lin_pwd_ec},
+		${incs_no},
+		#{incs_web_id_swt_yn},
+		#{fscr_id},
+		#{lsch_id}
+	)
+</insert>  
+<insert id="addcust" parameterType="com.amorepacific.oneap.test.vo.Occued_cust" >
+	insert into
+		ocp.occued_cust_tnc  
+	(incs_no, tcat_cd, chg_ch_cd, tncv_no, fscr_id, lsch_id)
+	VALUES
+	(
+		${incs_no},
+		#{tcat_cd},
+		#{chg_ch_cd},
+		#{tncv_no},
+		#{fscr_id},
+		#{lsch_id}
+	)
+</insert>
+
+</mapper>
